@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affairly - Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@700&family=Lora:wght@400;600&family=Exo+2:wght@600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: #e0e0e0;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #1a2b49;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        nav ul li a:hover {
+            color: #a3bffa;
+        }
+
+        .blog-section {
+            padding: 40px 0;
+            display: block;
+        }
+
+        .blog-section h2 {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 2.5rem;
+            color: #1a2b49;
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .blog-post {
+            background-color: #ffffff;
+            color: #333333;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post:hover {
+            transform: scale(1.05);
+        }
+
+        .blog-post h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.5rem;
+            color: #1a2b49;
+            margin-bottom: 10px;
+        }
+
+        .blog-post .meta {
+            font-size: 0.9rem;
+            color: #666666;
+            margin-bottom: 15px;
+        }
+
+        .blog-post p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: #1a2b49;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .read-more:hover {
+            color: #a3bffa;
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #1a2b49;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px 0;
+            width: 100%;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        .admin-section {
+            display: none;
+            background-color: #e0e0e0;
+            padding: 40px 0;
+            min-height: 100vh;
+        }
+
+        .admin-section h2 {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 2.5rem;
+            color: #1a2b49;
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .admin-form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .admin-form label {
+            display: block;
+            font-family: 'Roboto', sans-serif;
+            color: #1a2b49;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .admin-form input,
+        .admin-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #1a2b49;
+            border-radius: 5px;
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+        }
+
+        .admin-form textarea {
+            height: 200px;
+            resize: vertical;
+        }
+
+        .admin-form button {
+            background-color: #1a2b49;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .admin-form button:hover {
+            background-color: #a3bffa;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; margin-bottom: 10px; }
+            nav ul li { display: block; margin: 10px 0; }
+            nav ul li a { font-size: 1rem; }
+            .blog-section, .admin-section { padding: 20px 0; }
+            .blog-section h2, .admin-section h2 { font-size: 1.8rem; letter-spacing: 0.5px; margin-bottom: 20px; }
+            .blog-post, .admin-form { padding: 15px; margin-bottom: 15px; }
+            .blog-post h3 { font-size: 1.3rem; }
+            .blog-post p { font-size: 0.95rem; }
+            .container { padding: 0 10px; }
+            footer { position: relative; padding: 10px 0; }
+        }
+
+        @media (max-width: 480px) {
+            header h1 { font-size: 1.5rem; }
+            .blog-section h2, .admin-section h2 { font-size: 1.5rem; }
+            .blog-post h3 { font-size: 1.2rem; }
+            .blog-post p { font-size: 0.9rem; }
+            .read-more { font-size: 0.9rem; }
+            .admin-form input, .admin-form textarea { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Affairly</h1>
+            <nav>
+                <ul>
+                    <li><a onclick="showBlogSection()">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a onclick="showAdminSection()">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="blogSection" class="blog-section">
+        <div class="container">
+            <h2>Your Place to Be Informed</h2>
+            <div id="blog-posts">
+                <article class="blog-post">
+                    <h3>The Art of Modern Living</h3>
+                    <p class="meta">Posted on April 10, 2025 | By Admin</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </article>
+                <article class="blog-post">
+                    <h3>Exploring the Unknown</h3>
+                    <p class="meta">Posted on April 8, 2025 | By Admin</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <section id="adminSection" class="admin-section">
+        <div class="container">
+            <h2>Add New Blog Post</h2>
+            <div class="admin-form">
+                <label for="postTitle">Blog Title</label>
+                <input type="text" id="postTitle" placeholder="Enter blog title">
+                <label for="postDate">Date</label>
+                <input type="date" id="postDate">
+                <label for="postContent">Blog Content</label>
+                <textarea id="postContent" placeholder="Write your blog content here"></textarea>
+                <button onclick="submitPost()">Submit Post</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Affairly. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const adminPassword = "yourpassword123"; // Change this to your desired password
+
+        // Function to show admin section
+        function showAdminSection() {
+            const password = prompt("Enter admin password:");
+            if (password === adminPassword) {
+                document.getElementById("blogSection").style.display = "none";
+                document.getElementById("adminSection").style.display = "block";
+            } else {
+                alert("Incorrect password!");
+            }
+        }
+
+        // Function to show blog section
+        function showBlogSection() {
+            document.getElementById("adminSection").style.display = "none";
+            document.getElementById("blogSection").style.display = "block";
+        }
+
+        // Function to submit a new blog post
+        function submitPost() {
+            const title = document.getElementById("postTitle").value;
+            const date = document.getElementById("postDate").value;
+            const content = document.getElementById("postContent").value;
+
+            if (title && date && content) {
+                const blogPosts = document.getElementById("blog-posts");
+                const newPost = document.createElement("article");
+                newPost.className = "blog-post";
+                newPost.innerHTML = `
+                    <h3>${title}</h3>
+                    <p class="meta">Posted on ${new Date(date).toLocaleDateString()} | By Admin</p>
+                    <p>${content}</p>
+                    <a href="#" class="read-more">Read More</a>
+                `;
+                blogPosts.insertBefore(newPost, blogPosts.firstChild);
+                document.getElementById("postTitle").value = "";
+                document.getElementById("postDate").value = "";
+                document.getElementById("postContent").value = "";
+                showBlogSection();
+                alert("Post added successfully! Update code and push to GitHub to save permanently.");
+            } else {
+                alert("Please fill in all fields!");
+            }
+        }
+    </script>
+</body>
+</html>
